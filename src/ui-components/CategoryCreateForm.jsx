@@ -235,9 +235,16 @@ export default function CategoryCreateForm(props) {
     Products: (r) => `${r?.name ? r?.name + " - " : ""}${r?.id}`,
   };
   const validations = {
-    name: [],
+    name: [
+      { type: "Required" },
+      {
+        type: "LessThanChar",
+        numValues: [50],
+        validationMessage: "The value must be 50  characters or fewer",
+      },
+    ],
     description: [],
-    Products: [],
+    Products: [{ type: "Required", validationMessage: "Product is required." }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -342,8 +349,13 @@ export default function CategoryCreateForm(props) {
       {...rest}
     >
       <TextField
-        label="Name"
-        isRequired={false}
+        label={
+          <span style={{ display: "inline-flex" }}>
+            <span>Name</span>
+            <span style={{ color: "red" }}>*</span>
+          </span>
+        }
+        isRequired={true}
         isReadOnly={false}
         value={name}
         onChange={(e) => {
@@ -410,7 +422,12 @@ export default function CategoryCreateForm(props) {
           setCurrentProductsDisplayValue("");
         }}
         currentFieldValue={currentProductsValue}
-        label={"Products"}
+        label={
+          <span style={{ display: "inline-flex" }}>
+            <span>Products</span>
+            <span style={{ color: "red" }}>*</span>
+          </span>
+        }
         items={Products}
         hasError={errors?.Products?.hasError}
         errorMessage={errors?.Products?.errorMessage}
@@ -426,7 +443,7 @@ export default function CategoryCreateForm(props) {
       >
         <Autocomplete
           label="Products"
-          isRequired={false}
+          isRequired={true}
           isReadOnly={false}
           placeholder="Search Product"
           value={currentProductsDisplayValue}

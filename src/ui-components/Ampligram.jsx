@@ -26,7 +26,7 @@ export default function Ampligram(props) {
       {...rest}
     >
       <Flex
-        gap="16px"
+        gap="24px"
         direction="row"
         width="unset"
         height="unset"
@@ -35,7 +35,7 @@ export default function Ampligram(props) {
         shrink="0"
         alignSelf="stretch"
         position="relative"
-        padding="16px 16px 16px 16px"
+        padding="24px 24px 24px 24px"
         {...getOverrideProps(overrides, "Header")}
       >
         <Flex
@@ -154,7 +154,7 @@ export default function Ampligram(props) {
         {...getOverrideProps(overrides, "image29766769")}
       ></Image>
       <Flex
-        gap="16px"
+        gap="24px"
         direction="row"
         width="unset"
         height="unset"
@@ -163,7 +163,7 @@ export default function Ampligram(props) {
         shrink="0"
         alignSelf="stretch"
         position="relative"
-        padding="16px 16px 16px 16px"
+        padding="24px 24px 24px 24px"
         {...getOverrideProps(overrides, "Options")}
       >
         <Flex
@@ -296,7 +296,7 @@ export default function Ampligram(props) {
           shrink="0"
           alignSelf="stretch"
           position="relative"
-          padding="16px 16px 16px 16px"
+          padding="24px 24px 24px 24px"
           {...getOverrideProps(overrides, "Area")}
         >
           <Text

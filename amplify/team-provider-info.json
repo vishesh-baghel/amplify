@@ -17,6 +17,9 @@
       },
       "storage": {
         "s3ecommerceappstorage1d5b1b9a": {}
+      },
+      "api": {
+        "ecommerceapp": {}
       }
     }
   }

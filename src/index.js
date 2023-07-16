@@ -6,6 +6,8 @@ import reportWebVitals from "./reportWebVitals";
 import { Amplify } from "aws-amplify";
 import config from "./aws-exports";
 import { AmplifyProvider } from "@aws-amplify/ui-react";
+import { ThemeProvider } from "@aws-amplify/ui-react";
+import { studioTheme } from "./ui-components";
 import "@aws-amplify/ui-react/styles.css";
 
 Amplify.configure(config);
@@ -14,7 +16,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <AmplifyProvider>
-      <App />
+      <ThemeProvider theme={studioTheme}>
+        <App />
+      </ThemeProvider>
     </AmplifyProvider>
   </React.StrictMode>
 );
