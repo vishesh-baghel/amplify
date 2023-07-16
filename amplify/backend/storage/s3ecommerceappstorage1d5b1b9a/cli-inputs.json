@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3ecommerceappstorage1d5b1b9a",
+  "bucketName": "ecommerce-app-storage-1d5b1b9a",
+  "policyUUID": "b792c5d5",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

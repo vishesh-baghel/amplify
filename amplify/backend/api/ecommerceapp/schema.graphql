@@ -1,0 +1,65 @@
+type Category @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String
+  description: String
+  Products: [Product] @hasMany(indexName: "byCategory", fields: ["id"])
+}
+
+type OrderItem {
+  id: ID
+  orderId: ID
+  productId: ID
+  quantity: Int
+  price: Float
+}
+
+type Review {
+  id: ID
+  comment: String
+  updatedAt: AWSTimestamp
+  createdAt: AWSTimestamp
+  rating: Int
+}
+
+type Order @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  customerId: ID
+  dateAndTime: AWSDateTime
+  totalAmount: Float
+  status: String
+  shippingAddress: String
+  paymentMethod: String
+  discount: Float
+  orderItems: OrderItem
+  customerID: ID! @index(name: "byCustomer")
+}
+
+type Product @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String!
+  price: Float!
+  description: String!
+  category: String
+  brand: String
+  stock: Int
+  images: [AWSURL!]
+  rating: Float
+  reviews: [Review]
+  createdAt: AWSTimestamp
+  updatedAt: AWSTimestamp
+  categoryID: ID! @index(name: "byCategory")
+}
+
+type Customer @model @auth(rules: [{allow: public}, {allow: owner}]) {
+  id: ID!
+  name: String!
+  email: String!
+  phoneNumber: AWSPhone!
+  address: String!
+  dateOfBirth: AWSDate
+  createdAt: AWSTimestamp
+  updatedAt: AWSTimestamp
+  Orders: [Order] @hasMany(indexName: "byCustomer", fields: ["id"])
+  password: String
+}
+ 
